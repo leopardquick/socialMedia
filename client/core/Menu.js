@@ -17,16 +17,14 @@ const Menu = withRouter(({history})=>{
         <AppBar position='static'>
             <Toolbar>
                 <Typography variant="h6" color='inherit'>
-                    Mern Skeleton
+                    Social Media
                 </Typography>
             <Link to='/'>
                 <IconButton style={isActive(history,'/')}>
                   <Home/>
                 </IconButton>
             </Link>
-            <Link to='/users'>
-                <Button style={isActive(history,'/users')} >Users</Button>
-            </Link>
+            
             {
                 !isAuthenticated() && (
                     <span>
@@ -42,6 +40,9 @@ const Menu = withRouter(({history})=>{
             {
                 isAuthenticated() && (
                     <span>
+                    <Link to='/users'>
+                         <Button style={isActive(history,'/users')} >Users</Button>
+                    </Link>
                     <Link to={"/user/"+isAuthenticated().user._id}>
                          <Button style={isActive(history,'/user'+ isAuthenticated().user._id)} >My Profile</Button>
                      </Link>

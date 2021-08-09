@@ -15,6 +15,7 @@ import { StaticRouter } from 'react-router'
 import { theme } from '../client/theme'
 import MainRouter from '../client/MainRouter'
 import Template from '../template'
+import postRoute from './routes/post.routes'
 
 
 
@@ -31,6 +32,7 @@ app.use(compression())
 app.use(cookieParser())
 app.use('/',userRoutes)
 app.use('/',authRouetes)
+app.use('/',postRoute)
 
 //comment out before building for production
 

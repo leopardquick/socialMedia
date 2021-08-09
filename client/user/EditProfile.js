@@ -4,6 +4,7 @@ import { useStyles } from '../theme'
 import { create, update } from './api-user'
 import { TextField } from '@material-ui/core'
 import { Link , Redirect} from 'react-router-dom'
+import  Fileupload from '@material-ui/icons/AddPhotoAlternate'
 import { isAuthenticated } from '../auth/auth-helper'
 
 
@@ -12,6 +13,8 @@ export default function EditProfile({match}){
     
     const[values,setValues] = useState({
         name: '',
+        about: '',
+        photo: '',
         password: '',
         email: '',
         error : '',
@@ -20,18 +23,21 @@ export default function EditProfile({match}){
     })
 
     const handleChange = name => event => {
+        const valu = name === 'photo' 
+        ? event.target.files[0] : event.target.value
         setValues(
-            {...values,[name]:event.target.value}
+            {...values,[name]: valu}
         )
     }
 
     const clicksubmit = () => {
-        const user = {
-            name : values.name || undefined,
-            email : values.email || undefined,
-            password : values.password || undefined
-        }
-        update(match.params.userId,isAuthenticated().token,user).then((data)=>{
+        let userData = new FormData()
+        values.name && userData.append('name',values.name)
+        values.email && userData.append('email',values.email)
+        values.about && userData.append('about',values.about)
+        values.password && userData.append('password',values.password)
+        values.photo && userData.append('photo',values.photo)
+        update(match.params.userId,isAuthenticated().token,userData).then((data)=>{
             if(data && data.error){
                 setValues({...values , error: data.error})
                 console.log(data)
@@ -52,11 +58,35 @@ export default function EditProfile({match}){
                    <Typography className={classes.title} variant="h6">
                        Edit profile
                    </Typography>
+                   <input accept="image/*" type='file'
+                       onChange={handleChange('photo')}
+                       style={{display:'none'}}
+                       id="icon-button-file"
+                   />
+                   <label htmlFor="icon-button-file">
+                        <Button variant="contained" color="default" component="span">
+                            Upload <Fileupload />
+                        </Button>
+                   </label>
+                   <span className={classes.filename}>
+                     {values.photo ? values.photo.name : ''}
+                    </span>
+                   <br />
                    <TextField id="name" 
                    value={values.name} label="name"
                     className={classes.textField}
                     onChange={handleChange('name')}
                     margin="normal"
+                   />
+                   <br />
+                   <TextField
+                       id="multiline-flexible"
+                       label="about"
+                       multiline
+                       className={classes.textField}
+                       rows="2"
+                       value={values.about}
+                       onChange={handleChange('about')}
                    />
                    <br />
                    <TextField id="email" 

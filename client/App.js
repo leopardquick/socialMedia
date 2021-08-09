@@ -12,7 +12,6 @@ const App = ()=>{
         if(jssStyles){
             jssStyles.parentNode.removeChild(jssStyles)
         }
-        console.log('removed')
     },[])
     return (
         <BrowserRouter>

@@ -51,10 +51,9 @@ const update = async(id,credential,user)=>{
             method : 'PUT',
             headers : {
                 'Accept' : 'application/json',
-                'Content-Type' : 'application/json',
                 'Authorization': 'Bearer ' + credential
             },
-            body : JSON.stringify(user)
+            body : user
         })
         return await response.json()
     }catch(e){
@@ -79,4 +78,64 @@ const remove = async(id,credential)=>{
     }
 }
 
-export {create,list,read,update,remove}
+
+const follow = async(id,credential,followId)=>{
+    console.log('follow api')
+    try{
+        let response = await fetch('/api/follow',{
+            method : 'PUT',
+            headers : {
+                'Accept' : 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + credential
+            },
+            body : JSON.stringify({
+                userId : id,
+                followId: followId
+
+            })
+        })
+        return await response.json()
+    }catch(e){
+        console.log(e)
+    }
+}
+
+const unfollow = async(id,credential,unfollowId)=>{
+    try{
+        let response = await fetch('/api/unfollow',{
+            method : 'PUT',
+            headers : {
+                'Accept' : 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + credential
+            },
+            body : JSON.stringify({
+                userId : id,
+                followId: unfollowId
+
+            })
+        })
+        return await response.json()
+    }catch(e){
+        console.log(e)
+    }
+}
+
+const peoplefind = async(id,credential,signal)=>{
+    try{
+        let response = await fetch('/api/findpeople/'+id,{
+            method: 'GET',
+            signal: signal,
+            headers: {
+                'Accept' : 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + credential
+            }
+        })
+        return await response.json()
+    }catch(e){
+        console.log(e)
+    }
+}
+export {create,list,read,update,remove,follow,unfollow,peoplefind}

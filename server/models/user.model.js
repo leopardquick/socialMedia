@@ -1,4 +1,4 @@
-import mongoose  from "mongoose"
+import mongoose, { Schema }  from "mongoose"
 import crypto from 'crypto'
 
 
@@ -15,10 +15,23 @@ const UserSchema = new mongoose.Schema({
         match: [/.+\@.+\..+/,"please fill a valid email address"],
         required : 'Email is required'
     },
+
+    about: {
+        type: String,
+        trim : true
+    },
+    photo: {
+        data: Buffer,
+        contentType : String
+
+    },
     created: {
         type : Date,
         default : Date.now
     },
+    
+    following: [{type: Schema.Types.ObjectId, ref:'User'}],
+    followers: [{ type: Schema.Types.ObjectId, ref: 'User'}],
     update: Date,
     hashed_password : {
         type: String,
