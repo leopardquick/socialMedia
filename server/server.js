@@ -5,9 +5,7 @@ import Template from "../template"
 
 mongoose.Promise = global.Promise
 mongoose.connect(config.mongoUri, {useCreateIndex:true,useNewUrlParser:true,useUnifiedTopology:true , useFindAndModify:false})
-mongoose.connection.on('error',()=>{
-  //throw new Error (`error in the`);
-})
+
 
 
 app.listen(config.port,(err)=>{

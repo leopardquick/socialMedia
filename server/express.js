@@ -22,7 +22,7 @@ import postRoute from './routes/post.routes'
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
 
-devBundle.compile(app)
+// devBundle.compile(app)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
