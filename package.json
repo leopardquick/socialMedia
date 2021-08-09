@@ -14,12 +14,7 @@
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.1.0",
-    "file-loader": "^6.2.0",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-middleware": "^3.7.0",
-    "webpack-hot-middleware": "^2.25.0",
-    "webpack-node-externals": "^1.7.2"
+    "file-loader": "^6.2.0"
   },
   "dependencies": {
     "@hot-loader/react-dom": "^16.13.0",
@@ -41,6 +36,11 @@
     "react-dom-server": "^0.0.5",
     "react-hot-loader": "4.12.20",
     "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-middleware": "^3.7.0",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-node-externals": "^1.7.2"
   }
 }
