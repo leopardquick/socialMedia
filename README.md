@@ -20,17 +20,21 @@ to avoid package dependency will use yarn instead of npm
 
 
 2) if yarn not installed run the
-    npm install yarn
+
+   npm install yarn
 
 3)install the dependency package by running
+
     yarn install
 
 
 4)after getting the package build the project by running
+
     yarn build
 
 
 5)after build the project you can start by
+
     yarn start
 
 
