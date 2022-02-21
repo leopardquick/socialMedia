@@ -9,20 +9,36 @@ Capable to post picture
 
 How to use
 
+NOTE:
+ first start monogdb server in your enviroment
+
 in development mode
 
 1) clone the repository
-2) run " npm init" to install dependency
-3) run "npm development " to start application
 
-in production mode 
+to avoid package dependency will use yarn instead of npm
 
-1) clone the repository
-2) run npm init to install dependency
-3) run "npm build" to build the application for production
-4) rum " npm start" to start the application
 
-note
+2) if yarn not installed run the
+    npm install yarn
 
-the application use mongodb as database in backend make sure you install it in your envireoment
-and you can configer mongo in configuration folder
+3)install the dependency package by running
+    yarn install
+
+
+4)after getting the package build the project by running
+    yarn build
+
+
+5)after build the project you can start by
+    yarn start
+
+
+Database connection
+
+-the project use mongodb when you start mongodb in your enviroment the application will connect automatical
+-you can configure the mongodb in folder config/config.js
+
+      mongoUri: 'mongodb://127.0.0.1:27017/Social'
+
+

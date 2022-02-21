@@ -5,9 +5,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "development": "nodemon",
-    "build": "webpack --config webpack.config.client.production.js  && webpack --mode=production --config webpack.config.server.js",
-    "start": "NODE_ENV=production node ./dist/server.generated.js"
+    "development": "set NODE_OPTIONS=--openssl-legacy-provider && nodemon",
+    "build": " set NODE_OPTIONS=--openssl-legacy-provider && webpack --config webpack.config.client.production.js  && webpack --mode=production --config webpack.config.server.js",
+    "start": "node ./dist/server.generated.js"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
